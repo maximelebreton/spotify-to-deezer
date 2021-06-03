@@ -12,9 +12,34 @@
       placeholder="Spotify playlist id"
     />
     <br />
-    <small>Example: 37i9dQZF1E4s8TIUrRS0Gj</small>
+    <small
+      ><code
+        ><b>Example</b>:
+        <code
+          style="cursor: pointer; text-decoration: dotted"
+          @click="showExample()"
+          >{{ exampleId }}</code
+        >&nbsp;
+        <a
+          :href="`https://open.spotify.com/playlist/${exampleId}`"
+          target="_blank"
+          style="text-decoration: none"
+          >🔗</a
+        ></code
+      >
+      <br /><small
+        ><i
+          >⚠️ Deezer widget may not working properly if cookies are disabled</i
+        ></small
+      ></small
+    >
+
     <br />
-    <div :key="index" v-for="(oembedUrl, index) in oembedUrls">
+    <div
+      style="margin-top: 1rem"
+      :key="index"
+      v-for="(oembedUrl, index) in oembedUrls"
+    >
       <iframe
         title="deezer-widget"
         :src="oembedUrl"
@@ -46,6 +71,7 @@ export default {
     const DEEZER_TOKEN = "frRt5PeyToVgdP7jC0cyl75QIqb3EuxGYWOFPDNFvQ7et9U0ut";
     const SPOTIFY_MARKET = "FR";
     const state = reactive({
+      exampleId: "37i9dQZF1E4s8TIUrRS0Gj",
       id: "",
       deezerTracks: [],
     });
@@ -151,9 +177,14 @@ export default {
       start();
     });
 
+    const showExample = () => {
+      state.id = state.exampleId;
+    };
+
     return {
       ...toRefs(state),
       oembedUrls,
+      showExample,
     };
   },
 };
@@ -167,5 +198,53 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+a {
+  color: green;
+}
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 </style>
