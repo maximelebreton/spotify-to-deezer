@@ -1,4 +1,7 @@
-# t
+# Spotify to Deezer
+Transform a Spotify playlist into deezer widgets
+
+
 
 ## Project setup
 ```
