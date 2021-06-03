@@ -2,6 +2,9 @@
 Transform a Spotify playlist into deezer widgets  
 https://spotify-to-deezer.netlify.app/
 
+Created with CodeSandbox:  
+  https://codesandbox.io/s/github/maximelebreton/spotify-to-deezer
+
 
 ## Project setup
 ```
