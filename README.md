@@ -1,5 +1,5 @@
 # Spotify to Deezer
-Transform a Spotify playlist into deezer widgets  
+Transform a Spotify playlist into deezer widgets (without login)
 https://spotify-to-deezer.netlify.app/
 
 
